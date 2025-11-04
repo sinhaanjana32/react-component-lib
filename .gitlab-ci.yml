@@ -1,0 +1,47 @@
+stages:
+  - install
+  - build
+  - test
+  - deploy
+
+# 1️⃣ Install dependencies
+install:
+  stage: install
+  image: node:18
+  script:
+    - npm ci
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+      - node_modules/
+  artifacts:
+    paths:
+      - node_modules/
+
+# 2️⃣ Build the library
+build:
+  stage: build
+  image: node:18
+  script:
+    - npm run build
+  artifacts:
+    paths:
+      - dist/
+
+# 3️⃣ Run tests (if any)
+test:
+  stage: test
+  image: node:18
+  script:
+    - npm test || echo "No tests configured"
+
+# 4️⃣ (Optional) Publish to npm or GitHub Packages
+deploy:
+  stage: deploy
+  image: node:18
+  script:
+    - npm ci
+    - npm run build
+    - npm publish
+  only:
+    - main

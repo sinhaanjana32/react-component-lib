@@ -1,7 +1,5 @@
 # basic way to use this package , you have to pass few things to Requirements
 
-import "./App.css"
-import { useState } from "react"
 import { Requirements } from "react-component-lib-a"
 
 function App() {

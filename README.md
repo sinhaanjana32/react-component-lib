@@ -1,4 +1,4 @@
-# basic way to use this package
+# basic way to use this package , you have to pass few things to Requirements
 
 import "./App.css"
 import { useState } from "react"
@@ -29,6 +29,7 @@ validator: (val) => /[A-Z]/g.test(val),
 ]
 
 return (
+
 <div className="App">
 <header className="App-header">
 <p>
